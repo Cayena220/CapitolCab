@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import {
   Image,
   KeyboardAvoidingView,
@@ -11,6 +12,7 @@ import {
 } from "react-native";
 
 export default function Register() {
+  const router = useRouter();
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
@@ -75,7 +77,10 @@ export default function Register() {
           </view>
 
           {/* Button */}
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => router.push("/auth/register2")}
+          >
             <Text style={styles.buttonText}>Next</Text>
           </TouchableOpacity>
 

@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import {
   Image,
   StyleSheet,
@@ -8,6 +9,7 @@ import {
 } from "react-native";
 
 export default function Register2() {
+  const router = useRouter();
   return (
     <View style={styles.container}>
       <Image
@@ -27,7 +29,10 @@ export default function Register2() {
         style={styles.input}
       />
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => router.push("/auth/login")}
+      >
         <Text style={styles.buttonText}>Create</Text>
       </TouchableOpacity>
 
