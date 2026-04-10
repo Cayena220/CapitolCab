@@ -40,14 +40,14 @@ export default function Dashboard() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View>
+        <View style={styles.headerContent}>
+          <Image
+            source={require("../../assets/images/CapitolCab.png")}
+            style={styles.headerLogo}
+            resizeMode="contain"
+          />
           <Text style={styles.headerTitle}>Homepage</Text>
-          <Text style={styles.time}>09:30 PM</Text>
         </View>
-
-        <TouchableOpacity style={styles.profileButton}>
-          <Image source={{ uri: "" }} style={styles.profileImage} />
-        </TouchableOpacity>
       </View>
 
       <ScrollView
@@ -148,22 +148,32 @@ const styles = StyleSheet.create({
     backgroundColor: "#0B6E3E",
   },
   header: {
-    paddingTop: 50,
+    paddingTop: 16,
     paddingHorizontal: 20,
-    paddingBottom: 20,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    paddingBottom: 18,
+    alignItems: "flex-start",
+  },
+  headerContent: {
+    marginTop: 10,
+    alignItems: "flex-start",
+    justifyContent: "center",
+  },
+  headerLogo: {
+    width: 120,
+    height: 52,
+    marginBottom: 4,
   },
   headerTitle: {
+    marginLeft: 2,
     fontSize: 24,
     fontWeight: "700",
     color: "#fff",
   },
   time: {
-    marginTop: 6,
     color: "#d1fae5",
     fontSize: 12,
+    marginLeft: 2,
+    marginTop: 4,
   },
   profileButton: {
     width: 54,
