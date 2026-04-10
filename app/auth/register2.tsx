@@ -1,14 +1,20 @@
 import {
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 export default function Register2() {
   return (
     <View style={styles.container}>
+      <Image
+        source={require("../../assets/images/CapitolCab.png")}
+        style={styles.logo}
+        resizeMode="contain"
+      />
       <Text style={styles.title}>Create your Account</Text>
       <Text style={styles.subtitle}>Account and Verification</Text>
 
@@ -52,4 +58,11 @@ const styles = StyleSheet.create({
   buttonText: { color: "#fff", fontWeight: "bold" },
   footer: { textAlign: "center", marginTop: 20 },
   link: { color: "green" },
+
+  logo: {
+    width: "50%",
+    height: 120,
+    alignSelf: "center",
+    marginBottom: 20,
+  },
 });
