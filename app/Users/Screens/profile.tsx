@@ -1,17 +1,17 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
 import {
-    Image,
-    Modal,
-    ScrollView,
-    Switch,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Image,
+  Modal,
+  ScrollView,
+  Switch,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
+import styles from "../../styles";
 import BottomNav from "../components/BottomNav";
-import styles from "../styles";
 
 const menuItems = [
   { label: "Account Info" },

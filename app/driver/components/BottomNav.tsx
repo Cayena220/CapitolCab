@@ -1,10 +1,10 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { Text, TouchableOpacity, View } from "react-native";
-import styles from "../styles";
+import styles from "../../styles";
 
 type BottomNavProps = {
-  active: "home" | "book" | "notification" | "chat" | "profile";
+  active: "home" | "trip" | "notification" | "chat" | "profile";
 };
 
 const navItems: Array<{
@@ -13,29 +13,39 @@ const navItems: Array<{
   icon: keyof typeof Ionicons.glyphMap;
   route: string;
 }> = [
-  { key: "home", label: "Home", icon: "home-outline", route: "/" },
-  { key: "book", label: "Book", icon: "book-outline", route: "/Screens/book" },
+  {
+    key: "home",
+    label: "Home",
+    icon: "home-outline",
+    route: "/driver/Screens/dashboard",
+  },
+  {
+    key: "trip",
+    label: "Trips",
+    icon: "car-outline",
+    route: "/driver/Screens/trip",
+  },
   {
     key: "notification",
     label: "Notification",
     icon: "notifications-outline",
-    route: "/Screens/notifcation",
+    route: "/driver/Screens/notification",
   },
   {
     key: "chat",
     label: "Chat",
     icon: "chatbubble-outline",
-    route: "/Screens/chat",
+    route: "/driver/Screens/chat",
   },
   {
     key: "profile",
     label: "Profile",
     icon: "person-outline",
-    route: "/Screens/profile",
+    route: "/driver/Screens/profile",
   },
 ];
 
-export default function BottomNav({ active }: BottomNavProps) {
+export default function DriverBottomNav({ active }: BottomNavProps) {
   const router = useRouter();
 
   return (

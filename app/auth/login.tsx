@@ -60,7 +60,7 @@ export default function Login() {
 
           <TouchableOpacity
             style={styles.authButton}
-            onPress={() => router.push("../Screens/dashboard")}
+            onPress={() => router.push("/Users/Screens/dashboard")}
           >
             <Text style={styles.authButtonText}>Login</Text>
           </TouchableOpacity>

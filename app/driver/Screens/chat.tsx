@@ -1,46 +1,45 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
 import {
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
+    KeyboardAvoidingView,
+    Platform,
+    ScrollView,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from "react-native";
-import BottomNav from "../components/BottomNav";
-import styles from "../styles";
+import styles from "../../styles";
+import DriverBottomNav from "../components/BottomNav";
 
 const threads = [
   {
     id: "1",
-    name: "John Earl Ortega",
-    lastMessage: "2 New Messages",
-    time: "5:43 PM",
+    name: "Passenger Request",
+    lastMessage: "Please wait at the terminal.",
+    time: "8:45 AM",
   },
   {
     id: "2",
-    name: "Driver Support",
-    lastMessage: "Your driver is nearby",
-    time: "4:20 PM",
+    name: "Dispatch",
+    lastMessage: "Confirm pickup complete.",
+    time: "7:30 AM",
   },
 ];
 
 const messages = [
-  { id: "1", fromMe: false, text: "Hello, are you available?" },
-  { id: "2", fromMe: true, text: "Yes, how can I help?" },
-  { id: "3", fromMe: false, text: "I need an update on my booking." },
+  { id: "1", fromMe: false, text: "I&apos;m here at the pickup point." },
+  { id: "2", fromMe: true, text: "Great, I&apos;m coming now." },
 ];
 
-export default function ChatScreen() {
+export default function DriverChat() {
   const [selectedThread, setSelectedThread] = useState<string | null>(null);
   const [draft, setDraft] = useState("");
 
   return (
     <View style={styles.chatScreen}>
       <View style={styles.chatHeader}>
-        <Text style={styles.chatHeaderText}>Chat</Text>
+        <Text style={styles.chatHeaderText}>Driver Chat</Text>
       </View>
 
       {selectedThread ? (
@@ -53,7 +52,7 @@ export default function ChatScreen() {
               <Ionicons name="chevron-back" size={24} color="#134e4a" />
             </TouchableOpacity>
             <Text style={[styles.chatThreadName, { fontSize: 18 }]}>
-              John Earl Ortega
+              Passenger Request
             </Text>
             <View style={{ width: 24 }} />
           </View>
@@ -90,7 +89,7 @@ export default function ChatScreen() {
               <TextInput
                 value={draft}
                 onChangeText={setDraft}
-                placeholder="message"
+                placeholder="Message"
                 style={styles.chatInput}
               />
               <TouchableOpacity style={styles.chatSendButton}>
@@ -121,7 +120,8 @@ export default function ChatScreen() {
           ))}
         </ScrollView>
       )}
-      <BottomNav active="chat" />
+
+      <DriverBottomNav active="chat" />
     </View>
   );
 }

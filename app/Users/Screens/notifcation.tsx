@@ -1,6 +1,6 @@
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import styles from "../../styles";
 import BottomNav from "../components/BottomNav";
-import styles from "../styles";
 
 const notifications = [
   {

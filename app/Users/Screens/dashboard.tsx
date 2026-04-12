@@ -10,8 +10,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import styles from "../../styles";
 import BottomNav from "../components/BottomNav";
-import styles from "../styles";
 
 const { width } = Dimensions.get("window");
 
@@ -48,7 +48,7 @@ export default function Dashboard() {
         <View style={styles.dashboardHeader}>
           <View style={styles.dashboardHeaderInner}>
             <Image
-              source={require("../../assets/images/CapitolCab.png")}
+              source={require("../../../assets/images/CapitolCab.png")}
               style={styles.dashboardLogo}
               resizeMode="contain"
             />

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import {
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
+    ScrollView,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from "react-native";
+import styles from "../../styles";
 import BottomNav from "../components/BottomNav";
-import styles from "../styles";
 
 export default function BookScreen() {
   const [tripType, setTripType] = useState("overnight");
@@ -117,8 +117,9 @@ export default function BookScreen() {
             </TouchableOpacity>
           </View>
         </View>
-        <BottomNav active="book" />
       </ScrollView>
+
+      <BottomNav active="book" />
     </View>
   );
 }

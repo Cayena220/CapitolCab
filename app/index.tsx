@@ -1,6 +1,5 @@
 import { useRouter } from "expo-router";
-import { Image, Text, TouchableOpacity } from "react-native";
-import styles from "./styles";
+import { Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 
 export default function Welcome() {
   const router = useRouter();
@@ -21,3 +20,22 @@ export default function Welcome() {
     </TouchableOpacity>
   );
 }
+
+const styles = StyleSheet.create({
+  welcome: {
+    flex: 1,
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+  },
+  welcomeImage: {
+    width: 200,
+    height: 200,
+    marginBottom: 40,
+  },
+  welcomeFooter: {
+    fontSize: 14,
+    color: "#999",
+  },
+});
