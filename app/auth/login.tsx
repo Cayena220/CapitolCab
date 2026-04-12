@@ -9,31 +9,30 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
+import styles from "../styles";
 
 export default function Login() {
   const router = useRouter();
 
   return (
     <KeyboardAvoidingView
-      className="flex-1 bg-white"
+      style={styles.authScreen}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <ScrollView
-        className="flex-1"
+        style={styles.authScroll}
         contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
         keyboardShouldPersistTaps="handled"
       >
-        <View className="flex-1 px-6 py-8 bg-white justify-center">
+        <View style={styles.authContent}>
           <Image
             source={require("../../assets/images/CapitolCab.png")}
-            className="w-[160px] h-[160px] self-center mb-6"
+            style={styles.authLogo}
             resizeMode="contain"
           />
 
-          <Text className="text-2xl font-bold text-slate-900 mb-2">
-            Hi, Welcome Back 👋
-          </Text>
-          <Text className="text-base text-slate-600 mb-7">
+          <Text style={styles.authTitle}>Hi, Welcome Back 👋</Text>
+          <Text style={styles.authSubtitle}>
             Hello again, you've been missed!
           </Text>
 
@@ -42,40 +41,39 @@ export default function Login() {
             placeholderTextColor="#999"
             keyboardType="email-address"
             autoCapitalize="none"
-            className="border border-slate-300 rounded-2xl px-4 py-4 mb-4 bg-slate-50 text-base text-slate-900"
+            style={styles.authInput}
           />
 
           <TextInput
             placeholder="Password"
             placeholderTextColor="#999"
             secureTextEntry
-            className="border border-slate-300 rounded-2xl px-4 py-4 mb-4 bg-slate-50 text-base text-slate-900"
+            style={styles.authInput}
           />
 
-          <View className="flex-row justify-between items-center mb-6">
-            <Text className="text-sm text-slate-800">Remember Me</Text>
+          <View style={styles.authRow}>
+            <Text style={styles.authFooterText}>Remember Me</Text>
             <TouchableOpacity>
-              <Text className="text-emerald-700 font-semibold">
-                Forgot Password?
-              </Text>
+              <Text style={styles.authLinkText}>Forgot Password?</Text>
             </TouchableOpacity>
           </View>
 
           <TouchableOpacity
-            className="bg-emerald-700 py-4 rounded-2xl items-center mb-6"
+            style={styles.authButton}
             onPress={() => router.push("../Screens/dashboard")}
           >
-            <Text className="text-white font-bold text-base">Login</Text>
+            <Text style={styles.authButtonText}>Login</Text>
           </TouchableOpacity>
 
-          <View className="flex-row flex-wrap justify-center items-center mt-2">
-            <Text className="text-sm text-slate-700">
-              Don't have an account?{" "}
-            </Text>
+          <View
+            style={[
+              styles.authRow,
+              { justifyContent: "center", flexWrap: "wrap", marginTop: 8 },
+            ]}
+          >
+            <Text style={styles.authFooterText}>Don't have an account? </Text>
             <TouchableOpacity onPress={() => router.push("../auth/register")}>
-              <Text className="text-emerald-700 font-semibold">
-                Create Account
-              </Text>
+              <Text style={styles.authLinkText}>Create Account</Text>
             </TouchableOpacity>
           </View>
         </View>

@@ -9,79 +9,78 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
+import styles from "../styles";
 
 export default function Register() {
   const router = useRouter();
+
   return (
     <KeyboardAvoidingView
-      className="flex-1 bg-white"
+      style={styles.authScreen}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <ScrollView
-        className="flex-1"
+        style={styles.authScroll}
         contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
         showsVerticalScrollIndicator={false}
       >
-        <View className="flex-1 px-5 py-8 bg-white">
+        <View style={styles.authContent}>
           <Image
             source={require("../../assets/images/CapitolCab.png")}
-            className="w-[50%] h-[120px] self-center mb-5"
+            style={[styles.authLogo, { width: "50%", height: 120 }]}
             resizeMode="contain"
           />
 
-          <Text className="text-2xl font-bold mb-1">Create your Account</Text>
-          <Text className="text-slate-600 mb-5">Personal Information</Text>
+          <Text style={styles.authTitle}>Create your Account</Text>
+          <Text style={styles.authSubtitle}>Personal Information</Text>
 
-          <TextInput
-            placeholder="Employee ID"
-            className="border border-slate-300 rounded-xl px-3 py-3 bg-slate-50 text-base mb-4"
-          />
+          <TextInput placeholder="Employee ID" style={styles.authInput} />
 
-          <View className="flex-row justify-between mb-4">
+          <View style={styles.authRow}>
             <TextInput
               placeholder="Full Name"
-              className="flex-[2] border border-slate-300 rounded-xl px-3 py-3 bg-slate-50 text-base mr-2"
+              style={[styles.authInputHalf, styles.authInputHalfMargin]}
             />
-            <TextInput
-              placeholder="Suffix"
-              className="flex-[2] border border-slate-300 rounded-xl px-3 py-3 bg-slate-50 text-base"
-            />
+            <TextInput placeholder="Suffix" style={styles.authInputHalf} />
           </View>
 
-          <View className="flex-row justify-between mb-4">
+          <View style={styles.authRow}>
             <TextInput
               placeholder="Contact No. 1"
               keyboardType="phone-pad"
-              className="flex-1 border border-slate-300 rounded-xl px-3 py-3 bg-slate-50 text-base mr-2"
+              style={[styles.authInputHalf, styles.authInputHalfMargin]}
             />
             <TextInput
               placeholder="Contact No. 2"
               keyboardType="phone-pad"
-              className="flex-1 border border-slate-300 rounded-xl px-3 py-3 bg-slate-50 text-base"
+              style={styles.authInputHalf}
             />
           </View>
 
-          <View className="flex-row mb-4">
+          <View style={[styles.authRow, { marginBottom: 16 }]}>
             <TextInput
               placeholder="Enter OTP"
               keyboardType="numeric"
-              className="flex-[2] border border-slate-300 rounded-xl px-3 py-3 bg-slate-50 text-base mr-2"
+              style={[
+                styles.authInputHalf,
+                { flex: 2, marginRight: 12, marginBottom: 0 },
+              ]}
             />
-            <TouchableOpacity className="flex-1 bg-emerald-700 rounded-xl justify-center items-center h-12">
-              <Text className="text-white font-semibold">Enter</Text>
+            <TouchableOpacity style={styles.authSmallButton}>
+              <Text style={styles.authButtonText}>Enter</Text>
             </TouchableOpacity>
           </View>
 
           <TouchableOpacity
-            className="bg-emerald-700 py-4 rounded-xl items-center mt-2"
+            style={[styles.authButton, { marginTop: 8 }]}
             onPress={() => router.push("/auth/register2")}
           >
-            <Text className="text-white font-bold text-base">Next</Text>
+            <Text style={styles.authButtonText}>Next</Text>
           </TouchableOpacity>
 
-          <Text className="text-center mt-5 text-slate-700">
+          <Text style={[styles.authFooterText, { marginTop: 20 }]}>
             Already have an account?{" "}
-            <Text className="text-emerald-700">Login</Text>
+            <Text style={styles.authLinkText}>Login</Text>
           </Text>
         </View>
       </ScrollView>

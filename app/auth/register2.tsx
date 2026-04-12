@@ -1,46 +1,53 @@
 import { useRouter } from "expo-router";
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import styles from "../styles";
 
 export default function Register2() {
   const router = useRouter();
+
   return (
-    <View className="flex-1 px-5 py-6 bg-white">
+    <View
+      style={[
+        styles.authScreen,
+        { paddingHorizontal: 20, paddingVertical: 24, backgroundColor: "#fff" },
+      ]}
+    >
       <Image
         source={require("../../assets/images/CapitolCab.png")}
-        className="w-[50%] h-[120px] self-center mb-5"
+        style={[styles.authLogo, { width: "50%", height: 120 }]}
         resizeMode="contain"
       />
-      <Text className="text-2xl font-bold mb-1">Create your Account</Text>
-      <Text className="text-slate-600 mb-5">Account and Verification</Text>
+      <Text style={styles.authTitle}>Create your Account</Text>
+      <Text style={styles.authSubtitle}>Account and Verification</Text>
 
       <TextInput
         placeholder="Email"
-        className="border border-slate-300 rounded-xl px-3 py-3 mb-3 bg-slate-50"
+        style={[styles.authInput, { marginBottom: 12 }]}
       />
       <TextInput
         placeholder="Username"
-        className="border border-slate-300 rounded-xl px-3 py-3 mb-3 bg-slate-50"
+        style={[styles.authInput, { marginBottom: 12 }]}
       />
       <TextInput
         placeholder="Password"
         secureTextEntry
-        className="border border-slate-300 rounded-xl px-3 py-3 mb-3 bg-slate-50"
+        style={[styles.authInput, { marginBottom: 12 }]}
       />
       <TextInput
         placeholder="Confirm Password"
         secureTextEntry
-        className="border border-slate-300 rounded-xl px-3 py-3 mb-4 bg-slate-50"
+        style={[styles.authInput, { marginBottom: 16 }]}
       />
 
       <TouchableOpacity
-        className="bg-emerald-700 py-4 rounded-xl items-center"
+        style={[styles.authButton, { marginBottom: 0 }]}
         onPress={() => router.push("/auth/login")}
       >
-        <Text className="text-white font-bold text-base">Create</Text>
+        <Text style={styles.authButtonText}>Create</Text>
       </TouchableOpacity>
 
-      <Text className="text-center mt-5 text-slate-700">
-        Already have an account? <Text className="text-emerald-700">Login</Text>
+      <Text style={[styles.authFooterText, { marginTop: 20 }]}>
+        Already have an account? <Text style={styles.authLinkText}>Login</Text>
       </Text>
     </View>
   );

@@ -1,4 +1,6 @@
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import BottomNav from "../components/BottomNav";
+import styles from "../styles";
 
 const notifications = [
   {
@@ -26,37 +28,55 @@ const notifications = [
 
 export default function NotificationScreen() {
   return (
-    <View className="flex-1 bg-slate-100">
-      <View className="bg-emerald-900 px-5 pt-12 pb-6 rounded-b-[32px] shadow-xl">
-        <Text className="text-white text-2xl font-bold">Notification</Text>
-      </View>
+    <View style={{ flex: 1 }}>
+      <ScrollView
+        style={styles.notificationScreen}
+        contentContainerStyle={{ paddingBottom: 112 }}
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={styles.notificationHeader}>
+          <Text style={styles.notificationHeaderTitle}>Notification</Text>
+        </View>
 
-      <View className="px-5 mt-5 flex-row justify-between items-center">
-        <Text className="text-slate-900 text-base font-semibold">Recent Updates</Text>
-        <TouchableOpacity className="rounded-full bg-rose-100 px-4 py-2">
-          <Text className="text-rose-700 font-semibold text-sm">Read All</Text>
-        </TouchableOpacity>
-      </View>
+        <View style={styles.notificationTopRow}>
+          <Text style={styles.notificationSectionTitle}>Recent Updates</Text>
+          <TouchableOpacity style={styles.notificationButton}>
+            <Text style={styles.notificationButtonText}>Read All</Text>
+          </TouchableOpacity>
+        </View>
 
-      <ScrollView className="px-5 mt-4" showsVerticalScrollIndicator={false}>
-        {notifications.map((notification) => (
-          <View key={notification.id} className="mb-4 rounded-[24px] bg-white p-4 shadow-sm">
-            <View className="flex-row items-start gap-3">
-              <View className="w-12 h-12 rounded-full bg-emerald-100 items-center justify-center">
-                <Text className="text-emerald-700 font-bold">DC</Text>
-              </View>
-
-              <View className="flex-1">
-                <View className="flex-row justify-between items-start">
-                  <Text className="font-semibold text-slate-900">{notification.title}</Text>
-                  <Text className="text-xs text-emerald-700 font-semibold">{notification.status}</Text>
+        <ScrollView
+          style={styles.notificationList}
+          showsVerticalScrollIndicator={false}
+        >
+          {notifications.map((notification) => (
+            <View key={notification.id} style={styles.notificationCard}>
+              <View style={styles.notificationCardRow}>
+                <View style={styles.notificationAvatar}>
+                  <Text style={styles.notificationAvatarText}>DC</Text>
                 </View>
-                <Text className="text-slate-500 text-sm mt-1">{notification.description}</Text>
-                <Text className="text-slate-400 text-xs mt-3">{notification.time}</Text>
+
+                <View style={styles.notificationCardContent}>
+                  <View style={styles.notificationCardHeader}>
+                    <Text style={styles.notificationTitle}>
+                      {notification.title}
+                    </Text>
+                    <Text style={styles.notificationStatus}>
+                      {notification.status}
+                    </Text>
+                  </View>
+                  <Text style={styles.notificationDescription}>
+                    {notification.description}
+                  </Text>
+                  <Text style={styles.notificationTime}>
+                    {notification.time}
+                  </Text>
+                </View>
               </View>
             </View>
-          </View>
-        ))}
+          ))}
+        </ScrollView>
+        <BottomNav active="notification" />
       </ScrollView>
     </View>
   );
