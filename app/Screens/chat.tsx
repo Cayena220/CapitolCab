@@ -38,7 +38,7 @@ export default function ChatScreen() {
   const [draft, setDraft] = useState("");
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.chatScreen}>
       <View style={styles.chatHeader}>
         <Text style={styles.chatHeaderText}>Chat</Text>
       </View>

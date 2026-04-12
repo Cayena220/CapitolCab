@@ -1,3 +1,4 @@
+import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
 import {
     Image,
@@ -24,11 +25,19 @@ const menuItems = [
 export default function ProfileScreen() {
   const [darkMode, setDarkMode] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
+  const [showDateModal, setShowDateModal] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const [name, setName] = useState("Emily Johnson");
   const [email, setEmail] = useState("emily.j@email.com");
 
+  const upcomingDates = Array.from({ length: 7 }, (_, index) => {
+    const nextDate = new Date();
+    nextDate.setDate(nextDate.getDate() + index);
+    return new Date(nextDate);
+  });
+
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.profileScreen}>
       <Modal
         animationType="slide"
         transparent
@@ -73,6 +82,51 @@ export default function ProfileScreen() {
         </View>
       </Modal>
 
+      <Modal
+        animationType="slide"
+        transparent
+        visible={showDateModal}
+        onRequestClose={() => setShowDateModal(false)}
+      >
+        <View style={styles.profileModalOverlay}>
+          <View style={styles.profileModal}>
+            <Text style={styles.profileModalHeaderText}>Choose a date</Text>
+            <View style={styles.profileCalendarGrid}>
+              {upcomingDates.map((date) => {
+                const label = date.toLocaleDateString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                });
+                const isSelected =
+                  date.toDateString() === selectedDate.toDateString();
+
+                return (
+                  <TouchableOpacity
+                    key={label}
+                    style={[
+                      styles.profileDateCell,
+                      isSelected && styles.profileDateCellSelected,
+                    ]}
+                    onPress={() => {
+                      setSelectedDate(date);
+                      setShowDateModal(false);
+                    }}
+                  >
+                    <Text style={styles.profileDateCellText}>{label}</Text>
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
+            <TouchableOpacity
+              style={styles.profileDateCloseButton}
+              onPress={() => setShowDateModal(false)}
+            >
+              <Text style={styles.profileDateCloseText}>Close</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+
       <View style={styles.profileHeader}>
         <Text style={styles.profileHeaderTitle}>Profile Settings</Text>
       </View>
@@ -107,6 +161,27 @@ export default function ProfileScreen() {
               </Text>
             </TouchableOpacity>
           ))}
+
+          <TouchableOpacity
+            style={styles.profileMenuItem}
+            onPress={() => setShowDateModal(true)}
+          >
+            <Text style={styles.profileMenuText}>Set Date</Text>
+            <View style={styles.profileMenuTrailingRow}>
+              <Text style={styles.profileMenuTrailing}>
+                {selectedDate.toLocaleDateString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                })}
+              </Text>
+              <Ionicons
+                name="calendar-outline"
+                size={18}
+                color="#047857"
+                style={{ marginLeft: 8 }}
+              />
+            </View>
+          </TouchableOpacity>
 
           <View style={styles.profileMenuItem}>
             <View>

@@ -790,6 +790,46 @@ export default StyleSheet.create({
     color: "#64748b",
     fontSize: 14,
   },
+  profileMenuTrailingRow: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  profileCalendarGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    marginTop: 12,
+  },
+  profileDateCell: {
+    width: "48%",
+    borderRadius: 18,
+    backgroundColor: "#f8fafc",
+    borderWidth: 1,
+    borderColor: "#e2e8f0",
+    paddingVertical: 16,
+    paddingHorizontal: 12,
+    marginBottom: 12,
+  },
+  profileDateCellSelected: {
+    backgroundColor: "#ecfdf5",
+    borderColor: "#047857",
+  },
+  profileDateCellText: {
+    color: "#0f172a",
+    fontSize: 14,
+    fontWeight: "600",
+  },
+  profileDateCloseButton: {
+    marginTop: 16,
+    borderRadius: 24,
+    backgroundColor: "#047857",
+    paddingVertical: 14,
+    alignItems: "center",
+  },
+  profileDateCloseText: {
+    color: "#fff",
+    fontWeight: "700",
+  },
   profileLogoutButton: {
     marginTop: 24,
     borderRadius: 24,
