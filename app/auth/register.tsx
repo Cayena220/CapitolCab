@@ -1,196 +1,90 @@
 import { useRouter } from "expo-router";
 import {
-  Image,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
+    Image,
+    KeyboardAvoidingView,
+    Platform,
+    ScrollView,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from "react-native";
 
 export default function Register() {
   const router = useRouter();
   return (
     <KeyboardAvoidingView
-      style={{ flex: 1 }}
+      className="flex-1 bg-white"
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <ScrollView
-        contentContainerStyle={styles.scrollContainer}
+        className="flex-1"
+        contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.container}>
-          {/* Logo */}
+        <View className="flex-1 px-5 py-8 bg-white">
           <Image
             source={require("../../assets/images/CapitolCab.png")}
-            style={styles.logo}
+            className="w-[50%] h-[120px] self-center mb-5"
             resizeMode="contain"
           />
 
-          {/* Title */}
-          <Text style={styles.title}>Create your Account</Text>
-          <Text style={styles.subtitle}>Personal Information</Text>
+          <Text className="text-2xl font-bold mb-1">Create your Account</Text>
+          <Text className="text-slate-600 mb-5">Personal Information</Text>
 
-          {/* Employee ID */}
-          <TextInput placeholder="Employee ID" style={styles.input} />
+          <TextInput
+            placeholder="Employee ID"
+            className="border border-slate-300 rounded-xl px-3 py-3 bg-slate-50 text-base mb-4"
+          />
 
-          <View style={styles.row}>
+          <View className="flex-row justify-between mb-4">
             <TextInput
               placeholder="Full Name"
-              style={[styles.input, styles.flex2]}
+              className="flex-[2] border border-slate-300 rounded-xl px-3 py-3 bg-slate-50 text-base mr-2"
             />
             <TextInput
               placeholder="Suffix"
-              style={[styles.input, styles.flex2]}
+              className="flex-[2] border border-slate-300 rounded-xl px-3 py-3 bg-slate-50 text-base"
             />
           </View>
 
-          {/* Contact Numbers */}
-          <View style={styles.row}>
+          <View className="flex-row justify-between mb-4">
             <TextInput
               placeholder="Contact No. 1"
-              style={[styles.input, styles.halfInputLeft]}
               keyboardType="phone-pad"
+              className="flex-1 border border-slate-300 rounded-xl px-3 py-3 bg-slate-50 text-base mr-2"
             />
             <TextInput
               placeholder="Contact No. 2"
-              style={[styles.input, styles.halfInputRight]}
               keyboardType="phone-pad"
+              className="flex-1 border border-slate-300 rounded-xl px-3 py-3 bg-slate-50 text-base"
             />
           </View>
-          <view style={styles.row}>
-            {/* OTP */}
-            <View style={styles.row}>
-              <TextInput
-                placeholder="Enter OTP"
-                style={[styles.input, styles.otpInput]}
-                keyboardType="numeric"
-              />
 
-              <TouchableOpacity style={styles.otpButton}>
-                <Text style={styles.buttonText}>Enter</Text>
-              </TouchableOpacity>
-            </View>
-          </view>
+          <View className="flex-row mb-4">
+            <TextInput
+              placeholder="Enter OTP"
+              keyboardType="numeric"
+              className="flex-[2] border border-slate-300 rounded-xl px-3 py-3 bg-slate-50 text-base mr-2"
+            />
+            <TouchableOpacity className="flex-1 bg-emerald-700 rounded-xl justify-center items-center h-12">
+              <Text className="text-white font-semibold">Enter</Text>
+            </TouchableOpacity>
+          </View>
 
-          {/* Button */}
           <TouchableOpacity
-            style={styles.button}
+            className="bg-emerald-700 py-4 rounded-xl items-center mt-2"
             onPress={() => router.push("/auth/register2")}
           >
-            <Text style={styles.buttonText}>Next</Text>
+            <Text className="text-white font-bold text-base">Next</Text>
           </TouchableOpacity>
 
-          {/* Footer */}
-          <Text style={styles.footer}>
-            Already have an account? <Text style={styles.link}>Login</Text>
+          <Text className="text-center mt-5 text-slate-700">
+            Already have an account?{" "}
+            <Text className="text-emerald-700">Login</Text>
           </Text>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
   );
 }
-
-const styles = StyleSheet.create({
-  scrollContainer: {
-    flexGrow: 1,
-    justifyContent: "center",
-  },
-  otpInput: {
-    flex: 2,
-    marginRight: 8,
-  },
-
-  otpButton: {
-    flex: 1,
-    backgroundColor: "#0a7f3f",
-    borderRadius: 8,
-    alignItems: "center",
-    justifyContent: "center",
-    height: 48, // match input height
-  },
-  container: {
-    flex: 1,
-    paddingHorizontal: 20,
-    paddingVertical: 30,
-    backgroundColor: "#fff",
-  },
-
-  logo: {
-    width: "50%",
-    height: 120,
-    alignSelf: "center",
-    marginBottom: 20,
-  },
-
-  title: {
-    fontSize: 22,
-    fontWeight: "bold",
-    marginBottom: 5,
-  },
-
-  subtitle: {
-    color: "#777",
-    marginBottom: 20,
-  },
-
-  input: {
-    borderWidth: 1,
-    borderColor: "#ddd",
-    paddingHorizontal: 12,
-    borderRadius: 7,
-    fontSize: 14,
-    height: 48,
-    marginBottom: 12,
-    backgroundColor: "#f9f9f9",
-  },
-
-  row: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 12,
-  },
-
-  halfInputLeft: {
-    flex: 1,
-    marginRight: 8,
-  },
-
-  halfInputRight: {
-    flex: 1,
-  },
-
-  flex1: {
-    flex: 1,
-  },
-
-  flex2: {
-    flex: 2,
-    marginRight: 8,
-  },
-
-  button: {
-    backgroundColor: "#0a7f3f",
-    padding: 15,
-    borderRadius: 8,
-    alignItems: "center",
-    marginTop: 10,
-  },
-
-  buttonText: {
-    color: "#fff",
-    fontWeight: "bold",
-  },
-
-  footer: {
-    textAlign: "center",
-    marginTop: 20,
-  },
-
-  link: {
-    color: "green",
-  },
-});

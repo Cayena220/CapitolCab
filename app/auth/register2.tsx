@@ -1,73 +1,47 @@
 import { useRouter } from "expo-router";
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 export default function Register2() {
   const router = useRouter();
   return (
-    <View style={styles.container}>
+    <View className="flex-1 px-5 py-6 bg-white">
       <Image
         source={require("../../assets/images/CapitolCab.png")}
-        style={styles.logo}
+        className="w-[50%] h-[120px] self-center mb-5"
         resizeMode="contain"
       />
-      <Text style={styles.title}>Create your Account</Text>
-      <Text style={styles.subtitle}>Account and Verification</Text>
+      <Text className="text-2xl font-bold mb-1">Create your Account</Text>
+      <Text className="text-slate-600 mb-5">Account and Verification</Text>
 
-      <TextInput placeholder="Email" style={styles.input} />
-      <TextInput placeholder="Username" style={styles.input} />
-      <TextInput placeholder="Password" secureTextEntry style={styles.input} />
+      <TextInput
+        placeholder="Email"
+        className="border border-slate-300 rounded-xl px-3 py-3 mb-3 bg-slate-50"
+      />
+      <TextInput
+        placeholder="Username"
+        className="border border-slate-300 rounded-xl px-3 py-3 mb-3 bg-slate-50"
+      />
+      <TextInput
+        placeholder="Password"
+        secureTextEntry
+        className="border border-slate-300 rounded-xl px-3 py-3 mb-3 bg-slate-50"
+      />
       <TextInput
         placeholder="Confirm Password"
         secureTextEntry
-        style={styles.input}
+        className="border border-slate-300 rounded-xl px-3 py-3 mb-4 bg-slate-50"
       />
 
       <TouchableOpacity
-        style={styles.button}
+        className="bg-emerald-700 py-4 rounded-xl items-center"
         onPress={() => router.push("/auth/login")}
       >
-        <Text style={styles.buttonText}>Create</Text>
+        <Text className="text-white font-bold text-base">Create</Text>
       </TouchableOpacity>
 
-      <Text style={styles.footer}>
-        Already have an account? <Text style={styles.link}>Login</Text>
+      <Text className="text-center mt-5 text-slate-700">
+        Already have an account? <Text className="text-emerald-700">Login</Text>
       </Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, backgroundColor: "#fff" },
-  title: { fontSize: 22, fontWeight: "bold" },
-  subtitle: { color: "#777", marginBottom: 20 },
-  input: {
-    borderWidth: 1,
-    borderColor: "#ddd",
-    padding: 12,
-    borderRadius: 8,
-    marginBottom: 10,
-  },
-  button: {
-    backgroundColor: "#0a7f3f",
-    padding: 15,
-    borderRadius: 8,
-    alignItems: "center",
-  },
-  buttonText: { color: "#fff", fontWeight: "bold" },
-  footer: { textAlign: "center", marginTop: 20 },
-  link: { color: "green" },
-
-  logo: {
-    width: "50%",
-    height: 120,
-    alignSelf: "center",
-    marginBottom: 20,
-  },
-});

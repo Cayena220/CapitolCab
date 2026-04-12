@@ -1,14 +1,13 @@
 import { useRouter } from "expo-router";
 import {
-  Image,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
+    Image,
+    KeyboardAvoidingView,
+    Platform,
+    ScrollView,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from "react-native";
 
 export default function Login() {
@@ -16,56 +15,67 @@ export default function Login() {
 
   return (
     <KeyboardAvoidingView
-      style={styles.flex}
+      className="flex-1 bg-white"
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <ScrollView
-        contentContainerStyle={styles.scrollContainer}
+        className="flex-1"
+        contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
         keyboardShouldPersistTaps="handled"
       >
-        <View style={styles.container}>
+        <View className="flex-1 px-6 py-8 bg-white justify-center">
           <Image
             source={require("../../assets/images/CapitolCab.png")}
-            style={styles.logo}
+            className="w-[160px] h-[160px] self-center mb-6"
             resizeMode="contain"
           />
 
-          <Text style={styles.title}>Hi, Welcome Back 👋</Text>
-          <Text style={styles.subtitle}>Hello again, you've been missed!</Text>
+          <Text className="text-2xl font-bold text-slate-900 mb-2">
+            Hi, Welcome Back 👋
+          </Text>
+          <Text className="text-base text-slate-600 mb-7">
+            Hello again, you've been missed!
+          </Text>
 
           <TextInput
             placeholder="Email"
             placeholderTextColor="#999"
             keyboardType="email-address"
             autoCapitalize="none"
-            style={styles.input}
+            className="border border-slate-300 rounded-2xl px-4 py-4 mb-4 bg-slate-50 text-base text-slate-900"
           />
 
           <TextInput
             placeholder="Password"
             placeholderTextColor="#999"
             secureTextEntry
-            style={styles.input}
+            className="border border-slate-300 rounded-2xl px-4 py-4 mb-4 bg-slate-50 text-base text-slate-900"
           />
 
-          <View style={styles.row}>
-            <Text style={styles.rememberText}>Remember Me</Text>
+          <View className="flex-row justify-between items-center mb-6">
+            <Text className="text-sm text-slate-800">Remember Me</Text>
             <TouchableOpacity>
-              <Text style={styles.link}>Forgot Password?</Text>
+              <Text className="text-emerald-700 font-semibold">
+                Forgot Password?
+              </Text>
             </TouchableOpacity>
           </View>
 
           <TouchableOpacity
-            style={styles.button}
+            className="bg-emerald-700 py-4 rounded-2xl items-center mb-6"
             onPress={() => router.push("../Screens/dashboard")}
           >
-            <Text style={styles.buttonText}>Login</Text>
+            <Text className="text-white font-bold text-base">Login</Text>
           </TouchableOpacity>
 
-          <View style={styles.footerRow}>
-            <Text style={styles.footer}>Don't have an account? </Text>
+          <View className="flex-row flex-wrap justify-center items-center mt-2">
+            <Text className="text-sm text-slate-700">
+              Don't have an account?{" "}
+            </Text>
             <TouchableOpacity onPress={() => router.push("../auth/register")}>
-              <Text style={styles.link}>Create Account</Text>
+              <Text className="text-emerald-700 font-semibold">
+                Create Account
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -73,98 +83,3 @@ export default function Login() {
     </KeyboardAvoidingView>
   );
 }
-
-const styles = StyleSheet.create({
-  flex: {
-    flex: 1,
-    backgroundColor: "#fff",
-  },
-
-  scrollContainer: {
-    flexGrow: 1,
-    justifyContent: "center",
-  },
-
-  container: {
-    flex: 1,
-    paddingHorizontal: 24,
-    paddingVertical: 30,
-    backgroundColor: "#fff",
-    justifyContent: "center",
-  },
-
-  logo: {
-    width: 160,
-    height: 160,
-    alignSelf: "center",
-    marginBottom: 24,
-  },
-
-  title: {
-    fontSize: 26,
-    fontWeight: "700",
-    color: "#111",
-    marginBottom: 8,
-  },
-
-  subtitle: {
-    fontSize: 15,
-    color: "#777",
-    marginBottom: 28,
-  },
-
-  input: {
-    borderWidth: 1,
-    borderColor: "#ddd",
-    paddingVertical: 14,
-    paddingHorizontal: 16,
-    borderRadius: 10,
-    marginBottom: 14,
-    fontSize: 16,
-    backgroundColor: "#fafafa",
-  },
-
-  row: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 24,
-  },
-
-  rememberText: {
-    fontSize: 14,
-    color: "#333",
-  },
-
-  link: {
-    color: "#0a7f3f",
-    fontWeight: "600",
-  },
-
-  button: {
-    backgroundColor: "#0a7f3f",
-    paddingVertical: 16,
-    borderRadius: 10,
-    alignItems: "center",
-    marginBottom: 24,
-  },
-
-  buttonText: {
-    color: "#fff",
-    fontWeight: "700",
-    fontSize: 16,
-  },
-
-  footerRow: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    flexWrap: "wrap",
-    marginTop: 8,
-  },
-
-  footer: {
-    fontSize: 14,
-    color: "#444",
-  },
-});

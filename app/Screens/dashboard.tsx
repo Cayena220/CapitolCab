@@ -3,13 +3,12 @@ import { useRouter } from "expo-router";
 import { useEffect, useRef } from "react";
 import type { ScrollView as RNScrollView } from "react-native";
 import {
-    Dimensions,
-    Image,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Dimensions,
+  Image,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 const { width } = Dimensions.get("window");
@@ -38,43 +37,53 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.headerContent}>
+    <View className="flex-1 bg-emerald-900">
+      <View className="pt-4 px-5 pb-4 items-start">
+        <View className="mt-2 items-start justify-center">
           <Image
             source={require("../../assets/images/CapitolCab.png")}
-            style={styles.headerLogo}
+            className="w-[120px] h-[52px] mb-1"
             resizeMode="contain"
           />
-          <Text style={styles.headerTitle}>Homepage</Text>
+          <Text className="ml-1 text-2xl font-bold text-white">Homepage</Text>
         </View>
       </View>
 
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.scrollContent}
+        className="bg-slate-100 rounded-t-[28px] px-5 pb-28"
+        contentContainerStyle={{ paddingTop: 4 }}
       >
         <ScrollView
           ref={bannerRef}
           horizontal
           pagingEnabled
           showsHorizontalScrollIndicator={false}
-          style={styles.bannerScroll}
+          className="mb-6"
         >
           {bannerImages.map((image, index) => (
-            <TouchableOpacity key={index} style={styles.bannerCard}>
-              <Image source={{ uri: image }} style={styles.bannerImage} />
+            <TouchableOpacity
+              key={index}
+              className="mr-3"
+              style={{ width: width - 40 }}
+            >
+              <Image
+                source={{ uri: image }}
+                className="w-full h-36 rounded-[18px]"
+              />
 
-              <View style={styles.ratingRow}>
-                <Text style={styles.star}>⭐</Text>
-                <Text style={styles.ratingText}>4.8 (12k Reviews)</Text>
+              <View className="absolute bottom-3 left-3 flex-row items-center rounded-full bg-white/90 px-3 py-1">
+                <Text className="text-base">⭐</Text>
+                <Text className="ml-2 text-sm text-slate-900">
+                  4.8 (12k Reviews)
+                </Text>
               </View>
             </TouchableOpacity>
           ))}
         </ScrollView>
 
-        <TouchableOpacity style={[styles.actionCard, styles.manualCard]}>
-          <View style={styles.iconCircle}>
+        <TouchableOpacity className="flex-row items-center gap-4 rounded-[24px] bg-white p-4 mb-4 shadow-lg">
+          <View className="w-14 h-14 rounded-[18px] items-center justify-center bg-emerald-100">
             <MaterialCommunityIcons
               name="book-open-page-variant-outline"
               size={28}
@@ -83,223 +92,76 @@ export default function Dashboard() {
           </View>
 
           <View>
-            <Text style={styles.cardTitle}>User Manual</Text>
-            <Text style={styles.cardSubtitle}>Read the guide</Text>
+            <Text className="text-lg font-semibold text-slate-900">
+              User Manual
+            </Text>
+            <Text className="text-sm text-slate-500">Read the guide</Text>
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.actionCard, styles.travelCard]}>
-          <View style={styles.iconCircle}>
+        <TouchableOpacity className="flex-row items-center gap-4 rounded-[24px] bg-white p-4 mb-6 shadow-lg">
+          <View className="w-14 h-14 rounded-[18px] items-center justify-center bg-orange-100">
             <Ionicons name="bag-outline" size={26} color="#E58B00" />
           </View>
 
           <View>
-            <Text style={styles.cardTitle}>Travel Status</Text>
-            <Text style={styles.cardSubtitle}>View Status</Text>
+            <Text className="text-lg font-semibold text-slate-900">
+              Travel Status
+            </Text>
+            <Text className="text-sm text-slate-500">View Status</Text>
           </View>
         </TouchableOpacity>
 
-        <View style={styles.mapCard}>
+        <View className="rounded-[24px] overflow-hidden shadow-lg">
           <Image
             source={{
               uri: "https://maps.googleapis.com/maps/api/staticmap?center=Philippines&zoom=8&size=600x300&maptype=satellite",
             }}
-            style={styles.mapImage}
+            className="w-full h-44"
           />
         </View>
       </ScrollView>
 
-      <View style={styles.bottomNav}>
-        <TouchableOpacity style={styles.navItem}>
+      <View className="absolute bottom-0 left-0 right-0 flex-row justify-between items-center bg-white px-5 py-3 shadow-xl">
+        <TouchableOpacity className="items-center">
           <Ionicons name="home-outline" size={22} color="#16a34a" />
-          <Text style={[styles.navText, styles.activeNav]}>Home</Text>
+          <Text className="mt-1 text-xs font-semibold text-emerald-600">
+            Home
+          </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.navItem}
-          onPress={() => router.push("../screens/book")}
+          className="items-center"
+          onPress={() => router.push("../Screens/book")}
         >
           <Ionicons name="book-outline" size={22} color="#666" />
-          <Text style={styles.navText}>Book</Text>
+          <Text className="mt-1 text-xs text-slate-600">Book</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.navItem}>
+        <TouchableOpacity
+          className="items-center"
+          onPress={() => router.push("../Screens/notifcation")}
+        >
           <Ionicons name="notifications-outline" size={22} color="#666" />
-          <Text style={styles.navText}>Notification</Text>
+          <Text className="mt-1 text-xs text-slate-600">Notification</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.navItem}>
+        <TouchableOpacity
+          className="items-center"
+          onPress={() => router.push("../Screens/chat")}
+        >
           <Ionicons name="chatbubble-outline" size={22} color="#666" />
-          <Text style={styles.navText}>Chat</Text>
+          <Text className="mt-1 text-xs text-slate-600">Chat</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.navItem}>
+        <TouchableOpacity
+          className="items-center"
+          onPress={() => router.push("../Screens/profile")}
+        >
           <Ionicons name="person-outline" size={22} color="#666" />
-          <Text style={styles.navText}>Profile</Text>
+          <Text className="mt-1 text-xs text-slate-600">Profile</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#0B6E3E",
-  },
-  header: {
-    paddingTop: 16,
-    paddingHorizontal: 20,
-    paddingBottom: 18,
-    alignItems: "flex-start",
-  },
-  headerContent: {
-    marginTop: 10,
-    alignItems: "flex-start",
-    justifyContent: "center",
-  },
-  headerLogo: {
-    width: 120,
-    height: 52,
-    marginBottom: 4,
-  },
-  headerTitle: {
-    marginLeft: 2,
-    fontSize: 24,
-    fontWeight: "700",
-    color: "#fff",
-  },
-  time: {
-    color: "#d1fae5",
-    fontSize: 12,
-    marginLeft: 2,
-    marginTop: 4,
-  },
-  profileButton: {
-    width: 54,
-    height: 54,
-    borderRadius: 27,
-    backgroundColor: "#fff",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  profileImage: {
-    width: 42,
-    height: 42,
-    borderRadius: 21,
-  },
-  scrollContent: {
-    backgroundColor: "#f4f4f4",
-    borderTopLeftRadius: 28,
-    borderTopRightRadius: 28,
-    padding: 20,
-    paddingBottom: 120,
-  },
-  bannerScroll: {
-    marginBottom: 24,
-  },
-  bannerCard: {
-    width: width - 40,
-    marginRight: 12,
-  },
-  bannerImage: {
-    width: "100%",
-    height: 150,
-    borderRadius: 18,
-  },
-  ratingRow: {
-    position: "absolute",
-    bottom: 12,
-    left: 12,
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "rgba(0,0,0,0.35)",
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 12,
-  },
-  star: {
-    fontSize: 14,
-    marginRight: 6,
-  },
-  ratingText: {
-    color: "#fff",
-    fontSize: 13,
-  },
-  actionCard: {
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 18,
-    borderRadius: 18,
-    marginBottom: 18,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-  manualCard: {
-    backgroundColor: "#2ED1D3",
-  },
-  travelCard: {
-    backgroundColor: "#F6A313",
-  },
-  iconCircle: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
-    backgroundColor: "rgba(255,255,255,0.5)",
-    justifyContent: "center",
-    alignItems: "center",
-    marginRight: 16,
-  },
-  cardTitle: {
-    fontSize: 22,
-    fontWeight: "700",
-    color: "#111",
-  },
-  cardSubtitle: {
-    marginTop: 4,
-    fontSize: 14,
-    color: "#333",
-  },
-  mapCard: {
-    borderRadius: 20,
-    overflow: "hidden",
-    marginTop: 10,
-  },
-  mapImage: {
-    width: "100%",
-    height: 200,
-  },
-  bottomNav: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    backgroundColor: "#fff",
-    paddingVertical: 14,
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: -2 },
-    shadowOpacity: 0.08,
-    shadowRadius: 4,
-    elevation: 8,
-  },
-  navItem: {
-    alignItems: "center",
-  },
-  navText: {
-    fontSize: 11,
-    color: "#666",
-    marginTop: 4,
-  },
-  activeNav: {
-    color: "#16a34a",
-    fontWeight: "700",
-  },
-});
