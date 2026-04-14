@@ -128,7 +128,7 @@ export default function ProfileScreen() {
       </Modal>
 
       <View style={styles.profileHeader}>
-        <Text style={styles.profileHeaderTitle}>Profile Settings</Text>
+        <Text style={styles.profileHeaderTitle}> User Profile</Text>
       </View>
 
       <ScrollView

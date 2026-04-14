@@ -4,7 +4,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import styles from "../../styles";
 
 type BottomNavProps = {
-  active: "home" | "trip" | "notification" | "chat" | "profile";
+  active: "home" | "trip" | "history" | "notification" | "chat" | "profile";
 };
 
 const navItems: Array<{
@@ -24,6 +24,12 @@ const navItems: Array<{
     label: "Trips",
     icon: "car-outline",
     route: "/driver/Screens/trip",
+  },
+  {
+    key: "history",
+    label: "Travel",
+    icon: "time-outline",
+    route: "/driver/Screens/travel-history",
   },
   {
     key: "notification",

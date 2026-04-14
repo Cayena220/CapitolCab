@@ -44,8 +44,9 @@ export default function DriverChat() {
 
       {selectedThread ? (
         <KeyboardAvoidingView
-          style={styles.chatScreen}
+          style={{ flex: 1 }}
           behavior={Platform.OS === "ios" ? "padding" : "height"}
+          keyboardVerticalOffset={Platform.OS === "ios" ? 90 : 80}
         >
           <View style={styles.chatBackRow}>
             <TouchableOpacity onPress={() => setSelectedThread(null)}>
@@ -60,6 +61,7 @@ export default function DriverChat() {
           <ScrollView
             style={styles.chatMessages}
             showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ paddingBottom: 140 }}
           >
             {messages.map((message) => (
               <View

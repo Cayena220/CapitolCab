@@ -43,7 +43,7 @@ export default function Dashboard() {
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={styles.dashboardScrollRoot}
-        contentContainerStyle={{ paddingBottom: 112 }}
+        contentContainerStyle={{ paddingBottom: 50 }}
       >
         <View style={styles.dashboardHeader}>
           <View style={styles.dashboardHeaderInner}>
@@ -52,7 +52,7 @@ export default function Dashboard() {
               style={styles.dashboardLogo}
               resizeMode="contain"
             />
-            <Text style={styles.dashboardTitle}>Homepage</Text>
+            <Text style={styles.dashboardTitle}>Dashboard</Text>
           </View>
         </View>
 

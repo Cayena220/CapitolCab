@@ -68,7 +68,6 @@ export default function DriverDashboard() {
               You are currently available for new trip assignments.
             </Text>
           </View>
-
           <View style={styles.dashboardCard}>
             <Text style={styles.dashboardCardTitle}>Today&apos;s Summary</Text>
             <Text style={[styles.dashboardCardSubtitle, { marginTop: 8 }]}>
@@ -81,7 +80,7 @@ export default function DriverDashboard() {
               2 pending pickups
             </Text>
           </View>
-
+          //* Announcement */
           <View style={styles.dashboardCard}>
             <Image
               source={{

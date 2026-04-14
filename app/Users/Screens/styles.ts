@@ -449,123 +449,10 @@ export default StyleSheet.create({
     fontWeight: "600",
   },
 
-  // Travel History
-  travelHistoryScreen: {
-    flex: 1,
-    backgroundColor: "#f1f5f9",
-  },
-  travelHistoryHeader: {
-    backgroundColor: "#064e3b",
-    paddingHorizontal: 20,
-    paddingTop: 48,
-    paddingBottom: 24,
-    borderBottomLeftRadius: 32,
-    borderBottomRightRadius: 32,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
-    elevation: 4,
-  },
-  travelHistoryHeaderTitle: {
-    color: "#fff",
-    fontSize: 28,
-    fontWeight: "700",
-  },
-  travelHistorySection: {
-    paddingHorizontal: 20,
-    paddingTop: 16,
-    paddingBottom: 16,
-  },
-  travelHistorySectionHeader: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 16,
-  },
-  travelHistorySectionBullet: {
-    width: 10,
-    height: 10,
-    borderRadius: 999,
-    backgroundColor: "#16a34a",
-    marginRight: 10,
-  },
-  travelHistorySectionTitle: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "#0f172a",
-  },
-  travelHistoryCard: {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    marginBottom: 16,
-    borderRadius: 24,
-    backgroundColor: "#fff",
-    padding: 16,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08,
-    shadowRadius: 6,
-    elevation: 3,
-  },
-  travelHistoryCardImage: {
-    width: 68,
-    height: 68,
-    borderRadius: 16,
-    resizeMode: "cover",
-  },
-  travelHistoryCardContent: {
-    flex: 1,
-    marginLeft: 12,
-  },
-  travelHistoryCardTitle: {
-    color: "#0f172a",
-    fontSize: 16,
-    fontWeight: "600",
-    marginBottom: 4,
-  },
-  travelHistoryCardSubtitle: {
-    color: "#475569",
-    fontSize: 14,
-    marginBottom: 6,
-  },
-  travelHistoryCardTime: {
-    color: "#94a3b8",
-    fontSize: 12,
-  },
-  travelHistoryStatusBadge: {
-    borderRadius: 999,
-    paddingVertical: 6,
-    paddingHorizontal: 12,
-    alignSelf: "flex-start",
-  },
-  travelHistoryStatusText: {
-    fontSize: 12,
-    fontWeight: "700",
-  },
-  travelHistoryStatusCompleted: {
-    backgroundColor: "#dcfce7",
-  },
-  travelHistoryStatusCompletedText: {
-    color: "#166534",
-  },
-  travelHistoryStatusCancelled: {
-    backgroundColor: "#fee2e2",
-  },
-  travelHistoryStatusCancelledText: {
-    color: "#991b1b",
-  },
-  travelHistoryStatusPending: {
-    backgroundColor: "#fef9c3",
-  },
-  travelHistoryStatusPendingText: {
-    color: "#92400e",
-  },
-
   // Chat
   chatScreen: {
     flex: 1,
     backgroundColor: "#f1f5f9",
-    paddingBottom: 96,
   },
   chatHeader: {
     backgroundColor: "#064e3b",
@@ -663,6 +550,10 @@ export default StyleSheet.create({
     color: "#0f172a",
   },
   chatInputWrapper: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
     backgroundColor: "#f1f5f9",
     paddingHorizontal: 16,
     paddingVertical: 12,
@@ -686,17 +577,14 @@ export default StyleSheet.create({
     flex: 1,
     color: "#0f172a",
     fontSize: 16,
-    height: 48,
-    paddingVertical: 0,
   },
   chatSendButton: {
     backgroundColor: "#047857",
     borderRadius: 999,
     paddingHorizontal: 16,
-    height: 48,
+    paddingVertical: 12,
     alignItems: "center",
     justifyContent: "center",
-    marginLeft: 12,
   },
   chatSendText: {
     color: "#fff",
@@ -1016,5 +904,5 @@ export default StyleSheet.create({
   profileModalButtonText: {
     color: "#fff",
     fontWeight: "700",
-  },
+  },  
 });

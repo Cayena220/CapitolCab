@@ -40,13 +40,14 @@ export default function ChatScreen() {
   return (
     <View style={styles.chatScreen}>
       <View style={styles.chatHeader}>
-        <Text style={styles.chatHeaderText}>Chat</Text>
+        <Text style={styles.chatHeaderText}></Text>
       </View>
 
       {selectedThread ? (
         <KeyboardAvoidingView
-          style={styles.chatScreen}
+          style={{ flex: 1 }}
           behavior={Platform.OS === "ios" ? "padding" : "height"}
+          keyboardVerticalOffset={Platform.OS === "ios" ? 90 : 80}
         >
           <View style={styles.chatBackRow}>
             <TouchableOpacity onPress={() => setSelectedThread(null)}>
@@ -61,6 +62,7 @@ export default function ChatScreen() {
           <ScrollView
             style={styles.chatMessages}
             showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ paddingBottom: 140 }}
           >
             {messages.map((message) => (
               <View
@@ -103,7 +105,7 @@ export default function ChatScreen() {
         <ScrollView
           style={styles.chatThreadList}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 112 }}
+          contentContainerStyle={{ paddingBottom: 50 }}
         >
           <Text style={styles.chatHeading}>Messages</Text>
           {threads.map((thread) => (

@@ -35,7 +35,7 @@ export default function NotificationScreen() {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.notificationHeader}>
-          <Text style={styles.notificationHeaderTitle}>Notification</Text>
+          <Text style={styles.notificationHeaderTitle}></Text>
         </View>
 
         <View style={styles.notificationTopRow}>
@@ -76,8 +76,8 @@ export default function NotificationScreen() {
             </View>
           ))}
         </ScrollView>
-        <BottomNav active="notification" />
       </ScrollView>
+      <BottomNav active="notification" />
     </View>
   );
 }
